@@ -12,6 +12,7 @@ package bioskop;
 public class Customer {
     private static String CustomerName;
     private static String CustomerPhone;
+    
 
     /**
      * @return the CustomerName

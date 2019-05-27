@@ -14,6 +14,7 @@ public class Main {
         System.out.println("Test GITHUB Bosku");
         System.out.println("Cobak gak ?");
         System.out.println("enak mas..");
+        System.out.println("aku subur");
     }
     
 }

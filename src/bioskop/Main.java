@@ -13,6 +13,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Test GITHUB Bosku");
         System.out.println("Cobak gak ?");
+        System.out.println("enak mas..");
     }
     
 }

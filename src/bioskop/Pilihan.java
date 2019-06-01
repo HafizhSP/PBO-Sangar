@@ -14,14 +14,14 @@ import java.util.Scanner;
  */
 public class Pilihan extends Biodata{
 
-    String namafilm;
+    String namafilm,jam;
     int harga;
    
     public void biodata(){
         bio();
     }
     
-    public void pilihan() {
+    public void film() {
         System.out.println("Pilihan Fim :");
         System.out.println("[1]. The Amazing Hafidz Zekken");
         System.out.println("[2]. Gung The Tomp Rider");
@@ -42,10 +42,30 @@ public class Pilihan extends Biodata{
                 harga = 30000;
                 break;
         }
-        
-        
-
         user.setNamaFilm(namafilm);
         user.setHargaTiket(harga);
     }
+    
+   public void jam(){
+       System.out.println("Pilihan Jam Hari ini :");
+        System.out.println("[1]. 12.30");
+        System.out.println("[2]. 18.00");
+        System.out.println("[3]. 20.00");
+        System.out.print("Masukan Pilihan :");
+        int pilihanjam = input.nextInt();
+        switch (pilihanjam) {
+            case 1:
+                jam = "12.30";
+                break;
+            case 2:
+                jam = "18.00";
+                break;
+            default:
+                jam = "20.00";
+                break;
+        }
+        user.setNamaFilm(namafilm);
+        user.setJam(jam);
+        user.setHargaTiket(harga);
+   }
 }

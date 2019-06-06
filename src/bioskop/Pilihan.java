@@ -73,5 +73,6 @@ public class Pilihan extends Biodata{
                 break;
         }
         user.setJam(jam);
+        
    }
 }

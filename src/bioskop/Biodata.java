@@ -6,6 +6,7 @@
 package bioskop;
 
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,15 +19,19 @@ public class Biodata {
     public String nama, nomer;
 
     public void bio() {
-        System.out.println("Pemasanan Tiket Bioskop");
-        System.out.print("Masukkan Nama :");
-        nama = input.nextLine();
-        System.out.print("Masukkan Nomer Telepon :");
-        nomer = input.next();
-
-        user.setCustomerName(nama);
-        user.setCustomerPhone(nomer);
-
+        try {
+             nama = JOptionPane.showInputDialog(null, "Masukkan Nama :", "Pemesanan Tiket Bioskop", JOptionPane.INFORMATION_MESSAGE);
+             nomer = JOptionPane.showInputDialog(null, "Masukkan Nomer Telepon :", "Pemesanan Tiket Bioskop", JOptionPane.INFORMATION_MESSAGE);
+                if (nomer.matches("[0-9]*")) {
+                    JOptionPane.showMessageDialog(null, "Tekan OKE untuk melanjutkan memilih film");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Inputan Nomor Anda SALAH!");
+                    bio();
+                }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Tekan OKE untuk keluar program");
+            System.exit(0);
+        }
     }
 
 

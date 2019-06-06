@@ -6,6 +6,7 @@
 package bioskop;
 
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -14,7 +15,9 @@ import java.util.Scanner;
  */
 public class Pilihan extends Biodata{
 
-    String namafilm,jam;
+    private String namafilm;
+    private String jam;
+    private int pilihanjam;
     int harga;
    
     public void biodata(){
@@ -47,12 +50,17 @@ public class Pilihan extends Biodata{
     }
     
    public void jam(){
-       System.out.println("Pilihan Jam Hari ini :");
-        System.out.println("[1]. 12.30");
-        System.out.println("[2]. 18.00");
-        System.out.println("[3]. 20.00");
-        System.out.print("Masukan Pilihan :");
-        int pilihanjam = input.nextInt();
+        String pilihJam = "[1]. 12.30\n"
+                + "[2]. 18.00\n"
+                + "[3]. 20.00\n";
+
+        try {
+            pilihanjam = Integer.parseInt(JOptionPane.showInputDialog(null, pilihJam, "Pilihan JAM Hari Ini", JOptionPane.QUESTION_MESSAGE));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Tekan OKE untuk keluar program");
+            System.exit(0);
+        }
+
         switch (pilihanjam) {
             case 1:
                 jam = "12.30";
@@ -60,12 +68,10 @@ public class Pilihan extends Biodata{
             case 2:
                 jam = "18.00";
                 break;
-            default:
+            case 3:
                 jam = "20.00";
                 break;
         }
-        user.setNamaFilm(namafilm);
         user.setJam(jam);
-        user.setHargaTiket(harga);
    }
 }

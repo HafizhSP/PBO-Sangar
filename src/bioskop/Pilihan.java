@@ -19,41 +19,53 @@ public class Pilihan extends Biodata{
     private String jam;
     private int pilihanjam;
     int harga;
+    private int judulFilm;
    
     public void biodata(){
         bio();
     }
     
     public void film() {
-        System.out.println("Pilihan Fim :");
-        System.out.println("[1]. The Amazing Hafidz Zekken");
-        System.out.println("[2]. Gung The Tomp Rider");
-        System.out.println("{3}. Yannuar The Guardian Of Malang");
-        System.out.print("Masukan Pilihan :");
-        int judul = input.nextInt();
-        switch (judul) {
+       String pilihFilm = "[1]. Hafidz Zekken v.1\n"
+                + "Rp. 30.000,00\n"
+                + "[2]. Hafidz Zekken v.2\n"
+                + "Rp. 45.000,00\n"
+                + "{3}. Hafidz Zekken v.3\n"
+                + "Rp. 30.000,00";
+         try {
+            judulFilm = Integer.parseInt(JOptionPane.showInputDialog(null, pilihFilm, "Pilihan FILM", JOptionPane.QUESTION_MESSAGE));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Tekan OKE untuk keluar program");
+            System.exit(0);
+        }
+
+        switch (judulFilm) {
             case 1:
-                namafilm = "The Amazing Hafidz Zekken";
+                this.namafilm = "Hafidz Zekken v.1";
                 harga = 30000;
                 break;
             case 2:
-                namafilm = "Gung The Tomp Rider";
+                namafilm = "Hafidz Zekken v.2";
                 harga = 45000;
                 break;
-            default:
-                namafilm = "Yannuar The Guardian Of Malang";
+            case 3:
+                namafilm = "Hafidz Zekken v.3";
                 harga = 30000;
                 break;
+            default:
+                JOptionPane.showMessageDialog(null, "Masukan angka sesuai pilihan yang tertera!");
+                film();
         }
-        user.setNamaFilm(namafilm);
-        user.setHargaTiket(harga);
-    }
     
-   public void jam(){
+    public void jam() {
         String pilihJam = "[1]. 12.30\n"
                 + "[2]. 18.00\n"
                 + "[3]. 20.00\n";
-
+//        System.out.println("Pilihan Jam Hari ini :");
+//        System.out.println("[1]. 12.30");
+//        System.out.println("[2]. 18.00");
+//        System.out.println("[3]. 20.00");
+//        System.out.print("Masukan Pilihan :");
         try {
             pilihanjam = Integer.parseInt(JOptionPane.showInputDialog(null, pilihJam, "Pilihan JAM Hari Ini", JOptionPane.QUESTION_MESSAGE));
         } catch (Exception e) {
@@ -73,6 +85,6 @@ public class Pilihan extends Biodata{
                 break;
         }
         user.setJam(jam);
-        
-   }
-}
+
+    } 
+

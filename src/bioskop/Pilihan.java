@@ -35,21 +35,21 @@ public class Pilihan extends Biodata{
          try {
             judulFilm = Integer.parseInt(JOptionPane.showInputDialog(null, pilihFilm, "Pilihan FILM", JOptionPane.QUESTION_MESSAGE));
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Tekan OKE untuk keluar program");
+            JOptionPane.showMessageDialog(null, "Tekan OK untuk keluar program");
             System.exit(0);
         }
 
         switch (judulFilm) {
             case 1:
-                this.namafilm = "Hafidz Zekken v.1";
+                this.namafilm = "Hafidz Zekken part 1";
                 harga = 30000;
                 break;
             case 2:
-                namafilm = "Hafidz Zekken v.2";
+                namafilm = "Hafidz Zekken part 2";
                 harga = 45000;
                 break;
             case 3:
-                namafilm = "Hafidz Zekken v.3";
+                namafilm = "Hafidz Zekken part 3";
                 harga = 30000;
                 break;
             default:

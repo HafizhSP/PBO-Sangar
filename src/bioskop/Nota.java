@@ -5,20 +5,56 @@
  */
 package bioskop;
 
+import java.util.Arrays;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Miftakhul Hafidz
  */
 public class Nota {
-    
+
     Tiket user = new Tiket();
-    
-    public void cetak(){
-        System.out.println("===============PEMESANAN============");
-        System.out.println("Costumer Name\t\t"+user.getCustomerName());
-        System.out.println("Customer Phone\t\t"+user.getCustomerPhone());
-        System.out.println("Judul Film\t\t"+user.getNamaFilm());
-        System.out.println("Jam\t\t\t"+user.getJam());
-        System.out.println("Harga\t\t\t"+user.getHargaTiket());
+    Controler ctr = new Controler();
+    Pilihan plh = new Pilihan();
+    int opsi;
+
+    public void cetak() {
+        String joption[] = {"Lanjut", "Kembali", "Selesai"};
+        
+        
+        String nota = "Costumer Name                      " + user.getCustName()
+                + "\nCustomer Phone                     " + user.getCustPhone()
+                + "\nJudul Film                                  " + user.getNamaFilm()
+                + "\nJam                                             " + user.getJam()
+                + "\nJumlah pesan                           " + user.getTotalOrang()
+                + "\nKursi                                          " + Arrays.toString(plh.kursibos)
+                + "\nHarga                                          " + (user.getHargaTiket()) * (user.getTotalOrang())
+                + "\nStatus Pembayaran                " + user.getStatusBayar()
+                + "\n\nTekan LANJUT untuk melanjutkan pemesanan"
+                + "\nTekan KEMBALI untuk mengulang pemesanan"
+                + "\nTekan SELESAI jika pesanan anda sudah selesai"
+                + "\nTekan NOMOR KURSI untuk melihat kursi anda";
+        
+        
+        opsi = JOptionPane.showOptionDialog(null, nota, "RINCIAN NOTA", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE , null, joption, joption[0]);
+
+        switch (opsi) {
+            case 0 : 
+                JOptionPane.showMessageDialog(null, "Tekan 'OKE' untuk lanjut ke Billing Pembayaran");
+                break;
+            case 1 :
+                JOptionPane.showMessageDialog(null, "Tekan 'OKE' untuk mengulang pemesanan film");
+                ctr.Control();
+                break;
+            case 2 : 
+                JOptionPane.showMessageDialog(null, "Tekan 'OKE' untuk keluar program");
+                System.exit(0);
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Tekan OKE untuk keluar program");
+                System.exit(0);
+                break;
+        }
     }
 }

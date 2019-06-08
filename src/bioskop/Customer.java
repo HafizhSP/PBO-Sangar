@@ -17,23 +17,23 @@ public class Customer {
     /**
      * @return the CustomerName
      */
-    public String getCustomerName() {
+    public String getCustName() {
         return CustName;
     }
 
 
-    public void setCustomerName(String name) {
+    public void setCustName(String name) {
         this.CustName = name;
     }
 
     /**
      * @return the CustomerPhone
      */
-    public String getCustomerPhone() {
+    public String getCustPhone() {
         return CustPhone;
     }
 
-    public void setCustomerPhone(String phone) {
+    public void setCustPhone(String phone) {
         this.CustPhone = phone;
     }
 }

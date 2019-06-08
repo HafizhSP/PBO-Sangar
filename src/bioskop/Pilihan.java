@@ -59,8 +59,7 @@ public class Pilihan extends Biodata{
         }
     }
     
-    public void jam() 
-    {
+    public void jam(){
         String pilihJam = "[1]. 12.30\n" + "[2]. 18.00\n" + "[3]. 20.00\n";
         System.out.println("Pilihan Jam Hari ini :");
         System.out.println("[1]. 12.30");

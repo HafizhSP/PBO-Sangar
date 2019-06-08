@@ -7,52 +7,54 @@ package bioskop;
 
 /**
  *
- * @author irvannaufal
+ * @author samsung
  */
 public class Tiket extends Customer {
-    private static String NamaFilm;
-    private static int HargaTiket;
-    private static String Jam;
 
-    /**
-     * @return the Kode
-     */
+    private static String namaFilm;
+    private static int hargaTiket;
+    private static String jam;
+    private static int totalOrang;
+    private static String status="BELUM LUNAS";
+
+
     public String getNamaFilm() {
-        return this.NamaFilm;
+        return this.namaFilm;
     }
 
-    /**
-     * @param NamaFilm the Kode to set
-     */
     public void setNamaFilm(String NamaFilm) {
-        this.NamaFilm = NamaFilm;
+        this.namaFilm = NamaFilm;
     }
 
-    /**
-     * @return the HargaTiket
-     */
     public int getHargaTiket() {
-        return this.HargaTiket;
+        return this.hargaTiket;
     }
 
-    /**
-     * @param HargaTiket the HargaTiket to set
-     */
     public void setHargaTiket(int hrg) {
-        this.HargaTiket = hrg;
+        this.hargaTiket = hrg;
     }
 
-    /**
-     * @return the Jam
-     */
     public String getJam() {
-        return this.Jam;
+        return this.jam;
     }
 
-    /**
-     * @param Jam the Jam to set
-     */
     public void setJam(String jam) {
-        this.Jam = jam;
+        this.jam = jam;
+    }
+    
+    public String getStatusBayar(){
+        return this.status;
+    }
+    
+    public void setStatusBayar(String status){
+        this.status = status;
+    }
+    
+    public int getTotalOrang(){
+        return this.totalOrang;
+    }
+    
+    public void setTotalOrang(int orang){
+        this.totalOrang = orang;
     }
 }

@@ -10,37 +10,30 @@ package bioskop;
  * @author samsung
  */
 public class Customer {
-    private static String CustomerName;
-    private static String CustomerPhone;
+    private static String CustName;
+    private static String CustPhone;
     
 
     /**
      * @return the CustomerName
      */
     public String getCustomerName() {
-        return CustomerName;
+        return CustName;
     }
 
-    /**
-     * @param n
-     * @param CustomerName the CustomerName to set
-     */
-    public void setCustomerName(String n) {
-        this.CustomerName = n;
+
+    public void setCustomerName(String name) {
+        this.CustName = name;
     }
 
     /**
      * @return the CustomerPhone
      */
     public String getCustomerPhone() {
-        return CustomerPhone;
+        return CustPhone;
     }
 
-    /**
-     * @param t
-     * @param CustomerPhone the CustomerPhone to set
-     */
-    public void setCustomerPhone(String t) {
-        this.CustomerPhone = t;
+    public void setCustomerPhone(String phone) {
+        this.CustPhone = phone;
     }
 }

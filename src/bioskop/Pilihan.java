@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,11 +25,11 @@ public class Pilihan extends Biodata {
     static String[] kursibos;
 
     public void film() {
-        String pilihFilm = "[1]. Hafidz Zekken v.1\n"
-                + "Rp. 30.000,00\n"
-                + "[2]. Hafidz Zekken v.2\n"
-                + "Rp. 45.000,00\n"
-                + "{3}. Hafidz Zekken v.3\n"
+        String pilihFilm = "[1]. The Amazing Hafidz Zekken\n"
+                + "Rp. 30.000,00\n\n"
+                + "[2]. Gung The Tomp Rider\n"
+                + "Rp. 45.000,00\n\n"
+                + "[3]. Yannuar The Guardian Of Malang\n"
                 + "Rp. 30.000,00";
         try {
             judulFilm = Integer.parseInt(JOptionPane.showInputDialog(null, pilihFilm, "Pilihan FILM", JOptionPane.QUESTION_MESSAGE));
@@ -41,21 +40,24 @@ public class Pilihan extends Biodata {
 
         switch (judulFilm) {
             case 1:
-                this.namafilm = "Hafidz Zekken part 1";
+                namafilm = "[1]. The Amazing Hafidz Zekken";
                 harga = 30000;
                 break;
             case 2:
-                namafilm = "Hafidz Zekken part 2";
+                namafilm = "[2]. Gung The Tomp Rider";
                 harga = 45000;
                 break;
             case 3:
-                namafilm = "Hafidz Zekken part 3";
+                namafilm = "[3]. Yannuar The Guardian Of Malang";
                 harga = 30000;
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Masukan angka sesuai pilihan yang tertera!");
                 film();
         }
+
+        user.setNamaFilm(namafilm);
+        user.setHargaTiket(harga);
     }
 
     public void jam() {
@@ -84,6 +86,16 @@ public class Pilihan extends Biodata {
 
     }
 
+    public void totalOrang() {
+        String totalOrang = "Ingin memesan berapa tiket ? ";
+        try {
+            user.setTotalOrang(Integer.parseInt(JOptionPane.showInputDialog(null, totalOrang, "Jumlah Tiket", JOptionPane.QUESTION_MESSAGE)));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Tekan OKE untuk keluar program");
+            System.exit(0);
+        }
+    }
+
     public void kursi() {
         File file = new File("src/bioskop/kursi.txt");
         BufferedReader br;
@@ -92,18 +104,16 @@ public class Pilihan extends Biodata {
         int j = 1;
         try {
             FileReader fr = new FileReader(file);
-            FileWriter fw = new FileWriter(file, true);
             br = new BufferedReader(fr);
-            bw = new BufferedWriter(fw);
             restart:
             for (int i = 0; i <= user.getTotalOrang() - 1; i++) {
                 String strLine;
-                String urutanKursi = "-----------------------"
-                        + "\n|           Layar        |"
-                        + "\n-----------------------"
-                        + "\n\nA1    A2    A3"
-                        + "\nB1    B2    B3"
-                        + "\nC1    C2    C3"
+                String urutanKursi = "--------------------------"
+                        + "\n|           Layar         |"
+                        + "\n--------------------------"
+                        + "\n\nA1            A2            A3"
+                        + "\nB1             B2           B3"
+                        + "\nC1             C2           C3"
                         + "\n\nSilahkan pilih kursi untuk orang ke-" + j + " (ex:A1)";
 
                 kursibos[i] = JOptionPane.showInputDialog(null, urutanKursi, "Kursi Bioskop", JOptionPane.QUESTION_MESSAGE);
@@ -117,12 +127,9 @@ public class Pilihan extends Biodata {
                         break restart;
                     }
                 }
-                bw.newLine();
-                bw.write(kursibos[i]);
                 j++;
 
             }
-            bw.close();
             br.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Tekan OKE untuk keluar program");

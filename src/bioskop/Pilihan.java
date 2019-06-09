@@ -6,7 +6,6 @@
 package bioskop;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import javax.swing.JOptionPane;
@@ -20,7 +19,7 @@ public class Pilihan extends Biodata {
     private String namafilm;
     private String jam;
     private int harga;
-    private int judulFilm;
+    public static int judulFilm;
     private int pilihanjam;
     static String[] kursibos;
 
@@ -40,6 +39,7 @@ public class Pilihan extends Biodata {
 
         switch (judulFilm) {
             case 1:
+
                 namafilm = "[1]. The Amazing Hafidz Zekken";
                 harga = 30000;
                 break;
@@ -97,9 +97,20 @@ public class Pilihan extends Biodata {
     }
 
     public void kursi() {
-        File file = new File("src/bioskop/kursi.txt");
+        File file = null;
+        switch (judulFilm) {
+            case 1:
+                file = new File("src/bioskop/kursi1.txt");
+                break;
+            case 2:
+                file = new File("src/bioskop/kursi2.txt");
+                break;
+            case 3:
+                file = new File("src/bioskop/kursi3.txt");
+                break;
+        }
+
         BufferedReader br;
-        BufferedWriter bw;
         kursibos = new String[user.getTotalOrang()];
         int j = 1;
         try {

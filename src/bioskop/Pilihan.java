@@ -10,7 +10,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,10 +24,6 @@ public class Pilihan extends Biodata {
     private int judulFilm;
     private int pilihanjam;
     static String[] kursibos;
-
-    public void biodata() {
-        bio();
-    }
 
     public void film() {
         String pilihFilm = "[1]. Hafidz Zekken v.1\n"
@@ -90,7 +85,7 @@ public class Pilihan extends Biodata {
     }
 
     public void kursi() {
-        File file = new File("src/bioskop/contoh.txt");
+        File file = new File("src/bioskop/kursi.txt");
         BufferedReader br;
         BufferedWriter bw;
         kursibos = new String[user.getTotalOrang()];
@@ -130,7 +125,8 @@ public class Pilihan extends Biodata {
             bw.close();
             br.close();
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Tekan OKE untuk keluar program");
+            System.exit(0);
         }
 
     }

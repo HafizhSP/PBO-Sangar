@@ -10,12 +10,12 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Miftakhul Hafidz
+ * @author Hafizh
  */
 public class Nota {
 
     Tiket user = new Tiket();
-    Controler ctr = new Controler();
+    Controller ctr = new Controller();
     Pilihan plh = new Pilihan();
     int opsi;
 
@@ -33,8 +33,7 @@ public class Nota {
                 + "\nStatus Pembayaran                " + user.getStatusBayar()
                 + "\n\nTekan LANJUT untuk melanjutkan pemesanan"
                 + "\nTekan KEMBALI untuk mengulang pemesanan"
-                + "\nTekan SELESAI jika pesanan anda sudah selesai"
-                + "\nTekan NOMOR KURSI untuk melihat kursi anda";
+                + "\nTekan SELESAI jika pesanan anda sudah selesai";
         
         
         opsi = JOptionPane.showOptionDialog(null, nota, "RINCIAN NOTA", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE , null, joption, joption[0]);

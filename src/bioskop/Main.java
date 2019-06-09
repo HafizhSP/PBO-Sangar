@@ -4,17 +4,20 @@
  * and open the template in the editor.
  */
 package bioskop;
-
 /**
  *
- * @author Hafizh
+ * @author Miftakhul Hafidz
  */
 public class Main {
+
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
-        System.out.println("Test GITHUB Bosku");
-        System.out.println("Cobak gak ?");
-        System.out.println("enak mas..");
-        System.out.println("aku subur");
+    
+        Controller con = new Controller();
+        con.Control();
+
     }
     
 }

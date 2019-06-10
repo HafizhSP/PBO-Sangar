@@ -5,7 +5,6 @@
  */
 package bioskop;
 
-import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,7 +13,6 @@ import javax.swing.JOptionPane;
  */
 public class Biodata {
 
-    Scanner input = new Scanner(System.in);
     Tiket user = new Tiket();
     public String nama, nomer;
 
@@ -32,6 +30,8 @@ public class Biodata {
             JOptionPane.showMessageDialog(null, "Tekan OKE untuk keluar program");
             System.exit(0);
         }
+        user.setCustName(nama);
+        user.setCustPhone(nomer);
     }
 
 

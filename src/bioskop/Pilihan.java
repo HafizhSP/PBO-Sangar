@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 
 /**
  *
+ * @author Hafizh S.P
+ * @author Yannuar A
  * @author IrvanNaufal
  */
 public class Pilihan extends Biodata {
@@ -125,8 +127,7 @@ public class Pilihan extends Biodata {
                         + "\n\nA1            A2            A3"
                         + "\nB1             B2           B3"
                         + "\nC1             C2           C3"
-                        + "\n\nSilahkan pilih kursi untuk orang ke-" + j + " (ex:A1)";
-
+                        + "\n\nSilahkan pilih kursi untuk orang ke-" + j + " (ex: A1)";
                 kursibos[i] = JOptionPane.showInputDialog(null, urutanKursi, "Kursi Bioskop", JOptionPane.QUESTION_MESSAGE);
 
                 while ((strLine = br.readLine()) != null) {
@@ -136,6 +137,15 @@ public class Pilihan extends Biodata {
                         kursi();
                         br.close();
                         break restart;
+                    }
+                }
+
+                if (i >= 1) {
+                    if (kursibos[i - 1].equalsIgnoreCase(kursibos[i])) {
+                        JOptionPane.showMessageDialog(null, "Kursi yang anda pilih SUDAH TERISI!\n\n"
+                                + "Silahkan klik OKE dan lakukan pemilihan kembali.");
+                        j--;
+                        i--;
                     }
                 }
                 j++;

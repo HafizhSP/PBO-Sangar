@@ -8,6 +8,7 @@ package bioskop;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,6 +24,7 @@ public class Pilihan extends Biodata {
     private int harga;
     public static int judulFilm;
     private int pilihanjam;
+    private int kursiTerpakai;
     static String[] kursibos;
 
     public void film() {
@@ -54,7 +56,7 @@ public class Pilihan extends Biodata {
                 harga = 30000;
                 break;
             default:
-                JOptionPane.showMessageDialog(null, "Masukan angka sesuai pilihan yang tertera!");
+                JOptionPane.showMessageDialog(null, "masukan angka sesuai pilihan yang tertera!");
                 film();
         }
 
@@ -85,13 +87,55 @@ public class Pilihan extends Biodata {
                 break;
         }
         user.setJam(jam);
+    }
 
+    public void olahKursiTerpakai() {
+        File file = null;
+        switch (judulFilm) {
+            case 1:
+                file = new File("src/bioskop/kursi1.txt");
+                break;
+            case 2:
+                file = new File("src/bioskop/kursi2.txt");
+                break;
+            case 3:
+                file = new File("src/bioskop/kursi3.txt");
+                break;
+        }
+        try {
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            String strLine;
+            while ((strLine = br.readLine()) != null) {
+                kursiTerpakai++;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Tekan OKE untuk keluar program");
+            System.exit(0);
+        }
     }
 
     public void totalOrang() {
-        String totalOrang = "Ingin memesan berapa tiket ? ";
+        String teksTotal = "Ingin memesan berapa tiket ? "
+                + "\nSisa kursi saat ini adalah " + (9 - kursiTerpakai) + " Kursi";
         try {
-            user.setTotalOrang(Integer.parseInt(JOptionPane.showInputDialog(null, totalOrang, "Jumlah Tiket", JOptionPane.QUESTION_MESSAGE)));
+            String totalOrang = JOptionPane.showInputDialog(null, teksTotal, "Jumlah Tiket", JOptionPane.QUESTION_MESSAGE);
+
+            if (totalOrang.matches("[a-zA-Z_]+")) {
+                JOptionPane.showMessageDialog(null, "Harap masukan hanya angka pada kolom inputan!");
+                totalOrang();
+
+            } else {
+                int jumlahOrang = Integer.parseInt(totalOrang);
+
+                if (jumlahOrang >= (9 - kursiTerpakai) || jumlahOrang <= 0) {
+                    JOptionPane.showMessageDialog(null, "Maaf, sisa kursi untuk saat ini adalah " + (9 - kursiTerpakai) + " Kursi");
+                    totalOrang();
+                } else {
+                    user.setTotalOrang(jumlahOrang);
+                }
+            }
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Tekan OKE untuk keluar program");
             System.exit(0);
@@ -112,44 +156,69 @@ public class Pilihan extends Biodata {
                 break;
         }
 
-        BufferedReader br;
         kursibos = new String[user.getTotalOrang()];
-        int j = 1;
+        String[] kursiTerisi = new String[kursiTerpakai];
+        int j = 1, m=0;
+        String pilihKursi, strLine;
+
         try {
+            
             FileReader fr = new FileReader(file);
-            br = new BufferedReader(fr);
+            BufferedReader br = new BufferedReader(fr);
+            
+            while ((strLine = br.readLine()) != null) {
+                kursiTerisi[m] = strLine;
+                m++;
+            }
+            
             restart:
             for (int i = 0; i <= user.getTotalOrang() - 1; i++) {
-                String strLine;
+
                 String urutanKursi = "--------------------------"
                         + "\n|           Layar         |"
                         + "\n--------------------------"
                         + "\n\nA1            A2            A3"
                         + "\nB1             B2           B3"
                         + "\nC1             C2           C3"
-                        + "\n\nSilahkan pilih kursi untuk orang ke-" + j + " (ex: A1)";
-                kursibos[i] = JOptionPane.showInputDialog(null, urutanKursi, "Kursi Bioskop", JOptionPane.QUESTION_MESSAGE);
+                        + "\n\nKursi yang sudah terisi adalah Kursi \n" + Arrays.toString(kursiTerisi)
+                        + "\n\nSilahkan pilih kursi untuk orang ke-" + j + " (Ex: A1)";
+                pilihKursi = JOptionPane.showInputDialog(null, urutanKursi, "Kursi Bioskop", JOptionPane.QUESTION_MESSAGE);
 
-                while ((strLine = br.readLine()) != null) {
-                    if (strLine.equalsIgnoreCase(kursibos[i])) {
-                        JOptionPane.showMessageDialog(null, "Kursi yang anda pilih SUDAH TERISI!\n\n"
-                                + "Silahkan klik OKE dan lakukan pemilihan kembali.");
-                        kursi();
-                        br.close();
-                        break restart;
+                if (pilihKursi.length() < 2 || pilihKursi.length() > 2) {
+                    JOptionPane.showMessageDialog(null, "Masukan pilihan kursi anda sesuai format yang ada! (Ex: A1)");
+                    kursi();
+                    br.close();
+                    break restart;
+                } else {
+                    boolean benar = true;
+
+                    for (int l = 0; l <= kursiTerisi.length - 1; l++) {
+                        if (kursiTerisi[l].equalsIgnoreCase(pilihKursi)) {
+                            JOptionPane.showMessageDialog(null, "Kursi yang anda pilih SUDAH TERISI!\n\n"
+                                    + "Silahkan klik OKE dan lakukan pemilihan kembali dari awal.");
+                            benar = false;
+                            i--;
+                            break;
+                        }
+                    }
+
+                    if (i >= 1) {
+                        for (int k = 0; k < i; k++) {
+                            if (kursibos[k].equalsIgnoreCase(pilihKursi)) {
+                                JOptionPane.showMessageDialog(null, "Kursi yang anda pilih sama dengan kursi sebelumnya!\n\n"
+                                        + "Silahkan klik OKE dan lakukan pemilihan kembali.");
+                                i--;
+                                benar = false;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (benar == true) {
+                        kursibos[i] = pilihKursi;
+                        j++;
                     }
                 }
-
-                if (i >= 1) {
-                    if (kursibos[i - 1].equalsIgnoreCase(kursibos[i])) {
-                        JOptionPane.showMessageDialog(null, "Kursi yang anda pilih SUDAH TERISI!\n\n"
-                                + "Silahkan klik OKE dan lakukan pemilihan kembali.");
-                        j--;
-                        i--;
-                    }
-                }
-                j++;
-
             }
             br.close();
         } catch (Exception e) {

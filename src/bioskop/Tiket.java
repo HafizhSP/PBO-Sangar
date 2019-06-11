@@ -7,7 +7,7 @@ package bioskop;
 
 /**
  *
- * @author samsung
+ * @author Hafizh S.P
  */
 public class Tiket extends Customer {
 

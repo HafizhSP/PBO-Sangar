@@ -22,8 +22,8 @@ public class Customer {
     }
 
 
-    public void setCustName(String name) {
-        this.CustName = name;
+    public void setCustName(String Name) {
+        this.CustName = Name;
     }
 
     /**
@@ -33,7 +33,7 @@ public class Customer {
         return CustPhone;
     }
 
-    public void setCustPhone(String phone) {
-        this.CustPhone = phone;
+    public void setCustPhone(String Phone) {
+        this.CustPhone = Phone;
     }
 }

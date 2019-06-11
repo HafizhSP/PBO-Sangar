@@ -7,7 +7,7 @@ package bioskop;
 
 /**
  *
- * @author samsung
+ * @author Hafizh S.P
  */
 public class Customer {
     private static String CustName;

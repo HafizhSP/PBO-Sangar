@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Hafizh
+ * @author Miftakhul Hafidz
  */
 public class Nota {
 
@@ -20,7 +20,7 @@ public class Nota {
     int opsi;
 
     public void cetak() {
-        String joption[] = {"Lanjut", "Kembali", "Selesai"};
+        String joption[] = {"LANJUT", "HOME", "SELESAI"};
         
         
         String nota = "Costumer Name                      " + user.getCustName()
@@ -28,12 +28,14 @@ public class Nota {
                 + "\nJudul Film                                  " + user.getNamaFilm()
                 + "\nJam                                             " + user.getJam()
                 + "\nJumlah pesan                           " + user.getTotalOrang()
-                + "\nKursi                                          " + Arrays.toString(plh.kursibos)
+                + "\nKursi                                           " + Arrays.toString(plh.kursibos)
                 + "\nHarga                                          " + (user.getHargaTiket()) * (user.getTotalOrang())
                 + "\nStatus Pembayaran                " + user.getStatusBayar()
+                + "\n\n    HARAP SCREENSHOT HALAMAN INI UNTUK PENUKARAN TIKET"
+                + "\n            PASTIKAN STATUS PEMBAYARAN ANDA 'LUNAS'"
                 + "\n\nTekan LANJUT untuk melanjutkan pemesanan"
-                + "\nTekan KEMBALI untuk mengulang pemesanan"
-                + "\nTekan SELESAI jika pesanan anda sudah selesai";
+                + "\nTekan HOME untuk mengulang/memesan film kembali"
+                + "\nTekan SELESAI jika pesanan anda sudah selesai dan ingin keluar";
         
         
         opsi = JOptionPane.showOptionDialog(null, nota, "RINCIAN NOTA", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE , null, joption, joption[0]);
@@ -43,7 +45,8 @@ public class Nota {
                 JOptionPane.showMessageDialog(null, "Tekan 'OKE' untuk lanjut ke Billing Pembayaran");
                 break;
             case 1 :
-                JOptionPane.showMessageDialog(null, "Tekan 'OKE' untuk mengulang pemesanan film");
+                JOptionPane.showMessageDialog(null, "Tekan 'OKE' untuk mengulang/memesan film kembali");
+                user.setStatusBayar("BELUM LUNAS");
                 ctr.Control();
                 break;
             case 2 : 

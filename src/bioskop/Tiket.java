@@ -38,23 +38,23 @@ public class Tiket extends Customer {
         return this.jam;
     }
 
-    public void setJam(String jam) {
-        this.jam = jam;
+    public void setJam(String Jam) {
+        this.jam = Jam;
     }
     
     public String getStatusBayar(){
         return this.status;
     }
     
-    public void setStatusBayar(String status){
-        this.status = status;
+    public void setStatusBayar(String Status){
+        this.status = Status;
     }
     
     public int getTotalOrang(){
         return this.totalOrang;
     }
     
-    public void setTotalOrang(int orang){
-        this.totalOrang = orang;
+    public void setTotalOrang(int Orang){
+        this.totalOrang = Orang;
     }
 }

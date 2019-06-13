@@ -19,6 +19,7 @@ public class Controller {
             bio.bio();
             bio.film();
             bio.jam();
+            bio.olahKursiTerpakai();
             bio.totalOrang();
             bio.kursi();
         
